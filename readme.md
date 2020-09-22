@@ -36,10 +36,6 @@ weddinglist@example.com / weddinglistadmin
 - I set up django rest framework pagination.
 - Django filter to implement a filtering.
 
-## Configuring CROSS-ORIGIN RESOURCE SHARING (CORS)
-
-- django-cors-headers plugin solve the problem
-
 # To Run the project
 
 ### Please navigate to the weddinglist directory.
