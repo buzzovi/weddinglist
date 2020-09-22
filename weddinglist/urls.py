@@ -21,8 +21,8 @@ from django.views.generic import TemplateView
 from django.views.generic.base import RedirectView
 
 from weddinglist.models import User
-from weddinglist.serializers import UserSerializer, GiftSerializer
-from weddinglist.views import UserViewSet, GiftViewSet
+from weddinglist.serializers import UserSerializer, GiftSerializer, GiftListSerializer
+from weddinglist.views import UserViewSet, GiftViewSet, GiftListViewSet, PurchaseGift, GiftListAdd, GiftListRemove, Report
 
 # Serializers define the API representation.
 
@@ -37,6 +37,7 @@ from weddinglist.views import UserViewSet, GiftViewSet
 router = routers.DefaultRouter()
 router.register(r'users', UserViewSet)
 router.register(r'gifts', GiftViewSet)
+router.register(r'giftlists', GiftListViewSet)
 
 
 favicon_view = RedirectView.as_view(
@@ -45,6 +46,10 @@ favicon_view = RedirectView.as_view(
 urlpatterns = [
     path('', include(router.urls)),
     path('favicon.ico', favicon_view),
+    path('purchasegift/<int:gift_list_item_id>', PurchaseGift),
+    path('giftlistadd/<int:gift_list_id>/<int:gift_id>', GiftListAdd),
+    path('giftlistremove/<int:gift_list_id>/<int:gift_id>', GiftListRemove),
+    path('report/<int:gift_list_id>', Report),
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('openapi', get_schema_view(

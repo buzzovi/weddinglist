@@ -14,7 +14,7 @@ class User(AbstractUser):
     username = None
     id = models.AutoField(primary_key=True)
     email = models.EmailField(_('email address'), unique=True)
-    is_active = models.BooleanField(default=False)
+    is_active = models.BooleanField(default=True)
     created = models.DateTimeField(auto_now_add=True, null=True, blank=True)
     modified = models.DateTimeField(auto_now=True, null=True, blank=True)
 

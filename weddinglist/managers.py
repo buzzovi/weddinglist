@@ -29,6 +29,7 @@ class UserManager(BaseUserManager):
         """
         extra_fields.setdefault('is_staff', True)
         extra_fields.setdefault('is_superuser', True)
+        extra_fields.setdefault('is_active', True)
 
         if extra_fields.get('is_staff') is not True:
             raise ValueError('Superuser must have is_staff=True.')
@@ -36,64 +37,3 @@ class UserManager(BaseUserManager):
             raise ValueError('Superuser must have is_superuser=True.')
 
         return self._create_user(email, password, **extra_fields)
-
-
-class AddressUtility:
-
-    @staticmethod
-    def defaut_address():
-        return {
-            "primary": 'false',
-            "billing": 'false',
-            "address_line1": "",
-            "address_line2": "",
-            "city": "",
-            "state": "",
-            "postcode": "",
-            "country": "UK",
-            "map": {}
-        }
-
-    # Google address respons example
-    address_components_default = [
-        {
-            "long_name": "16",
-            "short_name": "16",
-            "types": ["street_number"]
-        },
-        {
-            "long_name": "San Frantzisko Kalea",
-            "short_name": "San Frantzisko Kalea",
-            "types": ["route"]
-        },
-        {
-            "long_name": "Bilbo",
-            "short_name": "Bilbo",
-            "types": ["locality", "political"]
-        },
-        {
-            "long_name": "ME20 7PP",
-            "short_name": "ME20 7PP",
-            "types": ["postal_code"]
-        },
-        {
-            "long_name": "Aylesford",
-            "short_name": "Aylesford",
-            "types": ["postal_town"]
-        },
-        {
-            "long_name": "Kent",
-            "short_name": "Kent",
-            "types": ["administrative_area_level_2", "political"]
-        },
-        {
-            "long_name": "England",
-            "short_name": "England",
-            "types": ["administrative_area_level_1", "political"]
-        },
-        {
-            "long_name": "United Kingdom",
-            "short_name": "GB",
-            "types": ["country", "political"]
-        }
-    ]

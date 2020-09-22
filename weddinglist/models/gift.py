@@ -7,7 +7,7 @@ class Gift(models.Model):
     """
     name = models.CharField(max_length=255, unique=True)
     brand = models.CharField(max_length=255, null=True, blank=True)
-    price = models.IntegerField(default=0)
+    price = models.FloatField(default=0)
     currency = models.CharField(
         default="GBP", null=True, blank=True, max_length=5)
     in_stock_quantity = models.IntegerField(default=0)
@@ -15,7 +15,10 @@ class Gift(models.Model):
     created = models.DateTimeField(auto_now_add=True, null=True, blank=True)
     modified = models.DateTimeField(auto_now=True, null=True, blank=True)
 
-    objects = models.Manager()
+    # objects = models.Manager()
+
+    def __str__(self):
+        return 'Gift: ' + self.name
 
     class Meta:
         verbose_name = "Gift"

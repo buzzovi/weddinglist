@@ -19,10 +19,19 @@ class GroupSerializer(serializers.HyperlinkedModelSerializer):
 class GiftSerializer(serializers.ModelSerializer):
     class Meta:
         model = Gift
-        fields = ['id', 'name', 'created', 'modified']
+        fields = ['id', 'name', 'created', 'modified', ]
 
 
-class GiftListSerializer(serializers.ModelSerializer):
+class GiftListItemSerializer(serializers.HyperlinkedModelSerializer):
+
+    class Meta:
+        model = GiftListItem
+        fields = ['id', 'gift', 'status', 'purchased_date', ]
+
+
+class GiftListSerializer(serializers.HyperlinkedModelSerializer):
+    giftlist = GiftListItemSerializer(many=True, read_only=True)
+
     class Meta:
         model = GiftList
-        fields = ['id', 'name', 'created', 'modified']
+        fields = ['id', 'name', 'created', 'modified', 'giftlist', ]
