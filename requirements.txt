@@ -24,8 +24,11 @@ pytest==6.0.2
 pytest-django==3.10.0
 python-decouple==3.3
 pytz==2020.1
+PyYAML==5.3.1
 requests==2.24.0
 six==1.15.0
 sqlparse==0.3.1
 toml==0.10.1
 urllib3==1.25.10
+uritemplate==3.0.1
+wfastcgi==3.0.0

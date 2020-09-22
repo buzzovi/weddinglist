@@ -7,16 +7,22 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="shortcut icon" href="{% static 'images/favicon.png' %}" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
   </head>
   <body>
     <div><h1>List: {{ gift_list.name }}</h1></div>
-    <table>
+    <table class="table table-striped">
       <tr>
-        <th>Name</th>
-        <th>Brand</th>
-        <th>Price</th>
-        <th>Status</th>
-        <th>Purchased_Date</th>
+        <th scope="col">Name</th>
+        <th scope="col">Brand</th>
+        <th scope="col">Price</th>
+        <th scope="col">Status</th>
+        <th scope="col">Purchased_Date</th>
       </tr>
       {% for item in gift_list_items %}
       <tr>
